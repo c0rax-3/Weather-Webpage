@@ -12,10 +12,10 @@ export class ApiFetch {
         if (!response.ok) {
           throw new Error(`Response status: ${response.status}`);
         }
-        const result = response.json();
-        result.then((weather) => {
-          console.log(weather);
-        });
+        return response.json();
+      })
+      .then((weather) => {
+        console.log(weather);
       })
       .catch((reason) => {
         console.error(reason);
