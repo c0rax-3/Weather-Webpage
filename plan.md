@@ -8,13 +8,8 @@ Getting information from the API:
 /timeline/[location] – forecast queries.
 /timeline/[location]/[date1]/[date2] – queries for a specific date range.
 
-- HOW TO MAKE AN API REQUEST using async await
-async function getWeather() {
-  const apiKey = 'ZAK5CDFTNMMDMY556PVDS5GNQ'; 
-  const url = `https://visualcrossing.com{apiKey}`;
-
 //use try function and catch in case it goes wrong so it doesn't break the code
-}
+
 JAVASCRIPT:
 
 - Modules (each module should include a class apart from index.js which should handle the api fetch requests)
@@ -31,8 +26,6 @@ displayForecastDates with arguments (weather,temperature, date1, date2)
 
 Weather options (maybe as enums): Sunny, Cloudy, Rain, Thunder, Snow
 
-if necessary just combine index.js and apifetch.js
-
 - apifetch.js 
 
 This module handles the api requests to visual crossing with the format above. This information should be exported to index.js.
@@ -45,7 +38,7 @@ getForecastDates with arguments (location, date1, date2)
 - 
 
 HTML/CSS:
-
+Use SVG images for icons
 Wireframe (home screen): [] = textboxes
 
                 APP NAME
