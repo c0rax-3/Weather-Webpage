@@ -14,8 +14,17 @@ export class ApiFetch {
         }
         return response.json();
       })
-      .then((weather) => {
-        console.log(weather);
+      .then((fullWeatherData) => {
+        const weatherData = {
+          address: fullWeatherData.resolvedAddress,
+          timezone: fullWeatherData.timezone,
+          timezoneOffset: fullWeatherData.tzoffset,
+          days: fullWeatherData.days,
+        };
+        return weatherData;
+      })
+      .then((weatherData)=>{
+        console.log(weatherData)
       })
       .catch((reason) => {
         console.error(reason);
