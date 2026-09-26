@@ -19,7 +19,11 @@ export class ApiFetch {
           address: fullWeatherData.resolvedAddress,
           timezone: fullWeatherData.timezone,
           timezoneOffset: fullWeatherData.tzoffset,
-          days: fullWeatherData.days,
+          weather: fullWeatherData.days[0].conditions,
+          precipitation: fullWeatherData.days[0].precip,
+          snow: fullWeatherData.days[0].snow,
+          date: fullWeatherData.days[0].datetime,
+          temperature: fullWeatherData.days[0].temp,
         };
         return weatherData;
       })
