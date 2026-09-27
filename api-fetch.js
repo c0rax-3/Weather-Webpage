@@ -7,7 +7,7 @@ export class ApiFetch {
 
   getForecastDates(location, startDate, endDate) {
     const url = `${this.baseURL}/timeline/${location}/${startDate}/${endDate}?key=${this.apiKey}`;
-    fetch(url)
+    return fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Response status: ${response.status}`);
@@ -34,19 +34,27 @@ export class ApiFetch {
               conditions: day.conditions,
               description: day.description,
               icon: day.icon,
-              hours: day.hours,
+              hours: day.hours.map((hour) => {
+                return {
+                  datetime: hour.datetime,
+                  datetimeEpoch: hour.datetimeEpoch,
+                  temp: hour.temp,
+                  humidity: hour.humidity,
+                  precip: hour.precip,
+                  precipprob: hour.precipprob,
+                  preciptype: hour.preciptype,
+                  windspeed: hour.windspeed,
+                  conditions: hour.conditions,
+                  icon: hour.icon,
+                };
+              }),
             };
           }),
         };
         return weatherData;
-      })
-      .then((weatherData) => {
-        console.log(weatherData);
       })
       .catch((reason) => {
         console.error(reason);
       });
   }
 }
-const myclass = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ")
-console.log(myclass.getForecastDates("London", "2026-09-26", "2026-09-27"))
