@@ -6,8 +6,10 @@ const endDate = document.querySelector(".endDate");
 const submitButton = document.querySelector(".submit");
 
 function showReadableData(location, startDate, endDate) {
-  const apiWeatherData = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
-  console.log(apiWeatherData.getForecastDates(location, startDate, endDate));
+  const weatherApi = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
+  const weatherPromise = weatherApi.getForecastDates(location, startDate, endDate)
+  weatherPromise.then((weatherData)=>{
+    console.log(weatherData)})
 }
 
 submitButton.addEventListener("click", () => {
