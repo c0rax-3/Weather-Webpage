@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="index.css" rel="stylesheet">
-    <script src="index.js" defer></script>
+    <script src="index.js" type="module" defer></script>
     <title>Weather</title>
 </head>
 <body>
-    <h1>Weather App</h1>
+    <h1 class="title">Weather App</h1>
+    <div class="body">
+        <input class="location" placeholder="Location here" name="location"/>
+        <input class="startDate" placeholder="Start Date here" name="startDate"/>
+        <input class="endDate" placeholder="End Date here" name="endDate"/>
+        <button class="submit">Submit</button>
+    </div>
 </body>
 </html>
