@@ -19,19 +19,34 @@ export class ApiFetch {
           address: fullWeatherData.resolvedAddress,
           timezone: fullWeatherData.timezone,
           timezoneOffset: fullWeatherData.tzoffset,
-          weather: fullWeatherData.days[0].conditions,
-          precipitation: fullWeatherData.days[0].precip,
-          snow: fullWeatherData.days[0].snow,
-          date: fullWeatherData.days[0].datetime,
-          temperature: fullWeatherData.days[0].temp,
+          days: fullWeatherData.days.map((day) => {
+            return {
+              datetime: day.datetime,
+              datetimeEpoch: day.datetimeEpoch,
+              tempmax: day.tempmax,
+              tempmin: day.tempmin,
+              temp: day.temp,
+              humidity: day.humidity,
+              precip: day.precip,
+              preciptype: day.preciptype,
+              precipprob: day.precipprob,
+              windspeed: day.windspeed,
+              conditions: day.conditions,
+              description: day.description,
+              icon: day.icon,
+              hours: day.hours,
+            };
+          }),
         };
         return weatherData;
       })
-      .then((weatherData)=>{
-        console.log(weatherData)
+      .then((weatherData) => {
+        console.log(weatherData);
       })
       .catch((reason) => {
         console.error(reason);
       });
   }
 }
+const myclass = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ")
+console.log(myclass.getForecastDates("London", "2026-09-26", "2026-09-27"))
