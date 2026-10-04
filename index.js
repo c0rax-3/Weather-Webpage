@@ -20,7 +20,9 @@ submitButton.addEventListener("click", () => {
   const startDateInput = startDate.value;
   const endDateInput = endDate.value;
   locationRetrieved.textContent = locationInput.value
-  showReadableData(getWeatherData(locationInput, startDateInput, endDateInput));
+  getWeatherData(locationInput, startDateInput, endDateInput).then(
+    showReadableData
+  )
 })
 
 backButton.addEventListener("click", ()=>{
