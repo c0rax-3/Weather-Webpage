@@ -5,6 +5,8 @@ const startDate = document.querySelector(".startDate");
 const endDate = document.querySelector(".endDate");
 const submitButton = document.querySelector(".submit");
 const locationRetrieved = document.querySelector(".locationRetrieved")
+const backButton = document.querySelector(".back")
+const forwardButton = document.querySelector(".forwards")
 
 function showReadableData(location, startDate, endDate) {
   const date = document.querySelector(".date")
@@ -22,7 +24,7 @@ function showReadableData(location, startDate, endDate) {
   const weatherPromise = weatherApi.getForecastDates(location, startDate, endDate)
   weatherPromise.then((weatherData)=>{
     console.log(weatherData)
-    weatherData.days.map((day)=>{
+    weatherData.days.forEach((day)=>{
       date.textContent = `Date: ${day.datetime}`
       tempmax.textContent = `Temperature Max: ${(day.tempmax - 32) * 5/9}`
       tempmin.textContent = `Temperature Min: ${(day.tempmin - 32) * 5/9}`
@@ -44,4 +46,12 @@ submitButton.addEventListener("click", () => {
   const endDateInput = endDate.value;
   locationRetrieved.textContent = locationInput.value
   showReadableData(locationInput, startDateInput, endDateInput);
+})
+
+backButton.addEventListener("click", ()=>{
+
+})
+
+forwardButton.addEventListener("click", ()=>{
+  
 })
