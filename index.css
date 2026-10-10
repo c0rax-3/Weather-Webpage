@@ -1,0 +1,45 @@
+.inputs {
+    display: flex;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+
+.locationRetrieved {
+    display: flex;
+    padding-right: 20px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.p1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.p2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+    padding-right: 150px;
+}
+
+.precipChart {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: blue;
+    background-clip: content-box;
+    padding-left: 230px;
+}

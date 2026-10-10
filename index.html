@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="index.css" rel="stylesheet" />
     <script src="index.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
     <title>Weather</title>
   </head>
   <body>
     <h1 class="title">Weather App</h1>
     <div class="body">
+      <div class="inputs">
       <input
         class="location"
         placeholder="Location here"
@@ -29,19 +31,24 @@
         type="date"
       />
       <button class="submit">Submit</button>
+      </div>
       <div class="response">
-        <div class="locationRetrieved"></div>
-        <div class="date"></div>
-        <div class="tempmax"></div>
-        <div class="tempmin"></div>
-        <div class="temp"></div>
-        <div class="humidity"></div>
-        <div class="precip"></div>
-        <div class="preciptype"></div>
-        <div class="precipprob"></div>
-        <div class="windspeed"></div>
-        <div class="conditions"></div>
-        <div class="description"></div>
+        <div class="top">
+        <div class="locationRetrieved">Location</div>
+        <div class="date">00-00-00</div>
+        </div>
+        <div class="p1">
+        <div class="tempmax">Today's high: 0</div>
+        <div class="tempmin">Today's low: 0</div>
+        <div class="temp">Today's average: 0</div>
+        </div>
+        <canvas class="precipChart" style="width:100%; max-width:500px"></canvas>
+        
+        <div class="p2">
+        <div class="humidity">Humidity: 0</div>
+        <div class="conditions">Sunny</div>
+        <div class="description">Windy</div>
+        </div>
       </div>
       <div class="dayButtons">
       <button class="back">Previous Day</button>
