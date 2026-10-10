@@ -1,3 +1,5 @@
+import { fahrenheitToCelcius } from "./temperature-utils";
+
 const date = document.querySelector(".date");
 const tempmax = document.querySelector(".tempmax");
 const tempmin = document.querySelector(".tempmin");
@@ -30,9 +32,9 @@ const precipChart = new Chart(".precipChart", {
 function showReadableData(weatherData) {
   weatherData.days.forEach((day) => {
     date.textContent = `Date: ${day.datetime}`;
-    tempmax.textContent = `Temperature Max: ${((day.tempmax - 32) * 5) / 9}`;
-    tempmin.textContent = `Temperature Min: ${((day.tempmin - 32) * 5) / 9}`;
-    temp.textContent = `Temperature Average: ${((day.temp - 32) * 5) / 9}`;
+    tempmax.textContent = `Temperature Max: ${fahrenheitToCelcius(day.tempmax)}`;
+    tempmin.textContent = `Temperature Min: ${fahrenheitToCelcius(day.tempmin)}`;
+    temp.textContent = `Temperature Average: ${fahrenheitToCelcius(day.temp)}`;
     humidity.textContent = `Humidity: ${day.humidity}`;
     precip.textContent = `Precipitation: ${day.precip}`;
     preciptype.textContent = `Precipitation Type: ${day.preciptype}`;
