@@ -1,5 +1,5 @@
 import { ApiFetch } from "./api-fetch.js";
-import { showReadableData } from "./display.js";
+import { showDayData } from "./display.js";
 
 const location = document.querySelector(".location");
 const startDate = document.querySelector(".startDate");
@@ -11,6 +11,8 @@ const forwardButton = document.querySelector(".forwards");
 
 const weatherApi = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
 
+let currentPage = 0
+
 submitButton.addEventListener("click", () => {
   const locationInput = location.value;
   const startDateInput = startDate.value;
@@ -18,7 +20,9 @@ submitButton.addEventListener("click", () => {
   locationRetrieved.textContent = locationInput.value;
   weatherApi
     .getForecastDates(locationInput, startDateInput, endDateInput)
-    .then(showReadableData);
+    .then((weatherData)=>{
+      showDayData(weatherData, currentPage)
+    })
 });
 
 backButton.addEventListener("click", () => {});
