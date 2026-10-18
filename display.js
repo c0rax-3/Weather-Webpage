@@ -7,12 +7,13 @@ const temp = document.querySelector(".temp");
 const humidity = document.querySelector(".humidity");
 const conditions = document.querySelector(".conditions");
 const description = document.querySelector(".description");
+const precipChartElement = document.querySelector(".precipChart")
 
 const hoursChart = Array(24)
   .fill(null)
   .map((_, i) => `${i}:00`);
 
-const precipChart = new Chart(".precipChart", {
+const precipChart = new Chart(precipChartElement, {
   type: "bar",
   data: {
     labels: hoursChart,
