@@ -1,4 +1,5 @@
 import { fahrenheitToCelcius } from "./temperature-utils.js";
+import Chart from 'https://cloudflare.com';
 
 const date = document.querySelector(".date");
 const tempmax = document.querySelector(".tempmax");
@@ -18,8 +19,8 @@ const precipChart = new Chart(".precipChart", {
     labels: hoursChart,
     datasets: [
       {
-        backgroundColor: "blue",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 34],
+        backgroundColor: "red",
+        data: Array(24).fill(0),
       },
     ],
   },
@@ -34,6 +35,10 @@ function showDayData(weatherData, dayIndex) {
   humidity.textContent = `Humidity: ${day.humidity}`;
   conditions.textContent = `Conditions: ${day.conditions}`;
   description.textContent = `Description: ${day.description}`;
+
+  const hourPrecip = day.hours.map(hour => hour.precip); 
+  precipChart.data.datasets[0].data = hourPrecip; 
+  precipChart.update(); 
 }
 
 export { showDayData };

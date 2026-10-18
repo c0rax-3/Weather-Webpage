@@ -39,7 +39,6 @@
 .precipChart {
     display: flex;
     justify-content: space-evenly;
-    background-color: blue;
     background-clip: content-box;
     padding-left: 230px;
 }
