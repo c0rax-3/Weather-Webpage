@@ -19,6 +19,7 @@ const precipChart = new Chart(precipChartElement, {
     labels: hoursChart,
     datasets: [
       {
+        labels: "Precipitation",
         backgroundColor: "red",
         data: Array(24).fill(0),
       },

@@ -16,6 +16,7 @@ let currentWeatherData = 0;
 let currentPage = 0
 
 submitButton.addEventListener("click", () => {
+  currentPage = 0
   errorDisplay.textContent = ""
   const locationInput = location.value;
   const startDateInput = startDate.value;
