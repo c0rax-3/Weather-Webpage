@@ -1,5 +1,4 @@
 import { fahrenheitToCelcius } from "./temperature-utils.js";
-import Chart from 'https://cloudflare.com';
 
 const date = document.querySelector(".date");
 const tempmax = document.querySelector(".tempmax");
@@ -36,9 +35,9 @@ function showDayData(weatherData, dayIndex) {
   conditions.textContent = `Conditions: ${day.conditions}`;
   description.textContent = `Description: ${day.description}`;
 
-  const hourPrecip = day.hours.map(hour => hour.precip); 
-  precipChart.data.datasets[0].data = hourPrecip; 
-  precipChart.update(); 
+  const hourPrecip = day.hours.map((hour) => hour.precip);
+  precipChart.data.datasets[0].data = hourPrecip;
+  precipChart.update();
 }
 
 export { showDayData };

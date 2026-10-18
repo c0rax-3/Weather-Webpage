@@ -11,6 +11,7 @@ const forwardButton = document.querySelector(".forwards");
 
 const weatherApi = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
 
+let currentWeatherData = 0;
 let currentPage = 0
 
 submitButton.addEventListener("click", () => {
@@ -21,10 +22,21 @@ submitButton.addEventListener("click", () => {
   weatherApi
     .getForecastDates(locationInput, startDateInput, endDateInput)
     .then((weatherData)=>{
+      currentWeatherData = weatherData
       showDayData(weatherData, currentPage)
     })
 });
 
-backButton.addEventListener("click", () => {});
+backButton.addEventListener("click", () => {
+  if (currentPage > 0) { 
+    currentPage = currentPage - 1;
+    showDayData(currentWeatherData, currentPage);
+  }
+});
 
-forwardButton.addEventListener("click", () => {});
+forwardButton.addEventListener("click", () => {
+  if (currentPage < currentWeatherData.days.length - 1) {
+    currentPage = currentPage + 1;
+    showDayData(currentWeatherData, currentPage);
+  }
+});
