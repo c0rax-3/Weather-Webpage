@@ -5,7 +5,7 @@ const tempmax = document.querySelector(".tempmax");
 const tempmin = document.querySelector(".tempmin");
 const temp = document.querySelector(".temp");
 const humidity = document.querySelector(".humidity");
-const conditions = document.querySelector(".conditions");
+const conditions = document.querySelector(".conditgit aions");
 const description = document.querySelector(".description");
 const precipChartElement = document.querySelector(".precipChart")
 
@@ -19,13 +19,19 @@ const precipChart = new Chart(precipChartElement, {
     labels: hoursChart,
     datasets: [
       {
-        labels: "Precipitation",
-        backgroundColor: "red",
+        label: "Precipitation (mm)",
+        backgroundColor: "blue",
         data: Array(24).fill(0),
       },
-    ],
+    ]
   },
+  options: {
+      maintainAspectRatio: false,
+    } 
 });
+
+precipChart.canvas.parentNode.style.height = '200px';
+precipChart.canvas.parentNode.style.width = '500px'
 
 function showDayData(weatherData, dayIndex) {
   const day = weatherData.days[dayIndex];

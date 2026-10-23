@@ -8,35 +8,44 @@ const submitButton = document.querySelector(".submit");
 const locationRetrieved = document.querySelector(".locationRetrieved");
 const backButton = document.querySelector(".back");
 const forwardButton = document.querySelector(".forwards");
-const errorDisplay = document.querySelector(".error")
+const errorDisplay = document.querySelector(".error");
 
 const weatherApi = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
 
 let currentWeatherData = 0;
-let currentPage = 0
+let currentPage = 0;
 
 submitButton.addEventListener("click", () => {
-  currentPage = 0
-  errorDisplay.textContent = ""
+  currentPage = 0;
+  errorDisplay.textContent = "";
   const locationInput = location.value;
   const startDateInput = startDate.value;
   let endDateInput = endDate.value;
   if (endDateInput === "") {
-    endDateInput = startDateInput
+    endDateInput = startDateInput;
+
+    // errorDisplay.textContent = checkInputs(
+    //   locationInput,
+    //   startDateInput,
+    //   endDateInput,
+    // );
+    if (errorDisplay.textContent === "") {
+      locationRetrieved.textContent = locationInput.value;
+      weatherApi
+        .getForecastDates(locationInput, startDateInput, endDateInput)
+        .then((weatherData) => {
+          currentWeatherData = weatherData;
+          showDayData(weatherData, currentPage);
+        })
+        .catch((reason) => {
+          errorDisplay.textContent = `${reason} Error: Failed to fetch data, make sure you have inputed your values correctly`;
+        });
+    }
   }
-  locationRetrieved.textContent = locationInput.value;
-  weatherApi
-    .getForecastDates(locationInput, startDateInput, endDateInput)
-    .then((weatherData)=>{
-      currentWeatherData = weatherData
-      showDayData(weatherData, currentPage)
-    }).catch((reason)=>{
-      errorDisplay.textContent = `${reason} Error: Failed to fetch data, make sure you have inputed your values correctly`
-    })
 });
 
 backButton.addEventListener("click", () => {
-  if (currentPage > 0) { 
+  if (currentPage > 0) {
     currentPage = currentPage - 1;
     showDayData(currentWeatherData, currentPage);
   }
