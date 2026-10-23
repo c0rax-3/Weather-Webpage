@@ -1,5 +1,6 @@
 import { ApiFetch } from "./api-fetch.js";
 import { showDayData } from "./display.js";
+import { validateForecastInput } from "./validation.js";
 
 const location = document.querySelector(".location");
 const startDate = document.querySelector(".startDate");
@@ -23,16 +24,16 @@ submitButton.addEventListener("click", () => {
   let endDateInput = endDate.value;
   if (endDateInput === "") {
     endDateInput = startDateInput;
-
-    // errorDisplay.textContent = checkInputs(
-    //   locationInput,
-    //   startDateInput,
-    //   endDateInput,
-    // );
+    const { normalisedLocation, normalisedStartDate, normalisedEndDate } =
+      validateForecastInput(locationInput, startDateInput, endDateInput);
     if (errorDisplay.textContent === "") {
-      locationRetrieved.textContent = locationInput.value;
+      locationRetrieved.textContent = normalisedLocation.value;
       weatherApi
-        .getForecastDates(locationInput, startDateInput, endDateInput)
+        .getForecastDates(
+          normalisedLocation,
+          normalisedStartDate,
+          normalisedEndDate,
+        )
         .then((weatherData) => {
           currentWeatherData = weatherData;
           showDayData(weatherData, currentPage);
