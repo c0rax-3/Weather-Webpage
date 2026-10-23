@@ -5,7 +5,7 @@ const tempmax = document.querySelector(".tempmax");
 const tempmin = document.querySelector(".tempmin");
 const temp = document.querySelector(".temp");
 const humidity = document.querySelector(".humidity");
-const conditions = document.querySelector(".conditgit aions");
+const conditions = document.querySelector(".conditions");
 const description = document.querySelector(".description");
 const precipChartElement = document.querySelector(".precipChart")
 

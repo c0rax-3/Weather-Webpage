@@ -1,5 +1,10 @@
-function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
+function isValidDate(date) {
+  return date instanceof Date && !isNaN(date);
+}
+
+function dateToYYYYMMDD(date) {
+  const isoDate = date.toISOString();
+  return isoDate.slice(0, 10);
 }
 
 function validateForecastInput(location, startDate, endDate) {
@@ -22,7 +27,11 @@ function validateForecastInput(location, startDate, endDate) {
     normalisedStartDate = endTemp;
   }
 
-  return { normalisedLocation, normalisedStartDate, normalisedEndDate };
+  return {
+    normalisedLocation,
+    normalisedStartDate: dateToYYYYMMDD(normalisedStartDate),
+    normalisedEndDate: dateToYYYYMMDD(normalisedEndDate),
+  };
 }
 
-export { validateForecastInput }
+export { validateForecastInput };
