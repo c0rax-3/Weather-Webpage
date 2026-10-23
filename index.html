@@ -9,51 +9,58 @@
     <title>Weather</title>
   </head>
   <body>
-    <h1 class="title">Weather App</h1>
+    <h1 class="title">
+      <span class="sky">Sky</span><span class="w">W</span
+      ><span class="arden">arden</span>
+    </h1>
     <div class="body">
       <div class="inputs">
-      <input
-        class="location"
-        placeholder="Location here"
-        name="location"
-        type="text"
-      />
-      <input
-        class="startDate"
-        placeholder="Start Date here"
-        name="startDate"
-        type="date"
-      />
-      <input
-        class="endDate"
-        placeholder="End Date here"
-        name="endDate"
-        type="date"
-      />
-      <button class="submit">Submit</button>
+        <input
+          class="location"
+          placeholder="Location here"
+          name="location"
+          type="text"
+        />
+        <input
+          class="startDate"
+          placeholder="Start Date here"
+          name="startDate"
+          type="date"
+        />
+        <input
+          class="endDate"
+          placeholder="End Date here"
+          name="endDate"
+          type="date"
+        />
+        <button class="submit">Submit</button>
       </div>
       <div class="response">
         <div class="top">
-        <div class="locationRetrieved">Location</div>
-        <div class="date">00-00-00</div>
-        <div class="error"></div>
+          <div class="locationRetrieved">Location</div>
+          <div class="date">00-00-00</div>
+          <div class="error"></div>
         </div>
-        <div class="p1">
-        <div class="tempmax">Today's high: 0</div>
-        <div class="tempmin">Today's low: 0</div>
-        <div class="temp">Today's average: 0</div>
-        </div>
-        <canvas class="precipChart" style="width:100%; max-width:500px"></canvas>
-        
-        <div class="p2">
-        <div class="humidity">Humidity: 0</div>
-        <div class="conditions"></div>
-        <div class="description"></div>
+        <div class="responseBody">
+          <div class="p1">
+            <div class="tempmax">Today's high: 0</div>
+            <div class="tempmin">Today's low: 0</div>
+            <div class="temp">Today's average: 0</div>
+          </div>
+          <div class="p2">
+            <div class="humidity">Humidity: 0</div>
+            <div class="conditions">Conditions:</div>
+            <div class="description">Description:</div>
+          </div>
+          <div class="precipChartStyles">
+            <canvas class="precipChart"></canvas>
+          </div>
         </div>
       </div>
       <div class="dayButtons">
-      <button class="back">Previous Day</button>
-      <button class="forwards">Next Day</button>
+        <button class="back">Previous Day</button>
+        <button class="forwards">Next Day</button>
       </div>
+    </div>
   </body>
 </html>
