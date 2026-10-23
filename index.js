@@ -21,7 +21,7 @@ submitButton.addEventListener("click", () => {
   const locationInput = location.value;
   const startDateInput = startDate.value;
   let endDateInput = endDate.value;
-  if (endDateInput == "") {
+  if (endDateInput === "") {
     endDateInput = startDateInput
   }
   locationRetrieved.textContent = locationInput.value;
