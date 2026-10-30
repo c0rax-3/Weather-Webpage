@@ -16,7 +16,6 @@ function validateForecastInput(location, startDate, endDate) {
 
   let normalisedStartDate = new Date(startDate.trim());
   let normalisedEndDate = new Date(endDate.trim());
-  console.log(normalisedStartDate);
   if (!isValidDate(normalisedStartDate)) {
     throw new Error("Invalid start date");
   }

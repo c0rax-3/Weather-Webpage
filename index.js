@@ -40,7 +40,7 @@ submitButton.addEventListener("click", () => {
         showDayData(weatherData, currentPage);
       })
       .catch((reason) => {
-        errorDisplay.textContent = reason;
+        console.log(reason)
       });
   } catch (errorMessage) {
     errorDisplay.textContent = errorMessage;

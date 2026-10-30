@@ -55,6 +55,7 @@ export class ApiFetch {
       })
       .catch((reason) => {
         console.error(reason);
+        throw reason;
       });
   }
 }
