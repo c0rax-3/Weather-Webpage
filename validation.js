@@ -20,7 +20,9 @@ function validateForecastInput(location, startDate, endDate) {
   if (!isValidDate(normalisedStartDate)) {
     throw new Error("Invalid start date");
   }
-  
+  if (normalisedStartDate < startDateLimit) {
+    throw new Error("Invalid start date: start date cannot precede Jan 1 1970")
+  }
   if (!isValidDate(normalisedEndDate)) {
     throw new Error("Invalid end date");
   }
@@ -28,6 +30,9 @@ function validateForecastInput(location, startDate, endDate) {
     const endTemp = normalisedEndDate;
     normalisedEndDate = normalisedStartDate;
     normalisedStartDate = endTemp;
+    if (normalisedStartDate < startDateLimit) {
+    throw new Error("Invalid start date: start date cannot precede Jan 1 1970")
+  }
   }
 
   return {
