@@ -8,6 +8,7 @@ function dateToYYYYMMDD(date) {
 }
 
 function validateForecastInput(location, startDate, endDate) {
+  const startDateLimit = new Date("January 1, 1970 00:00:00");
   const normalisedLocation = location.trim();
   if (normalisedLocation === "") {
     throw new Error("wrong location format: location cannot be empty");
@@ -15,9 +16,11 @@ function validateForecastInput(location, startDate, endDate) {
 
   let normalisedStartDate = new Date(startDate.trim());
   let normalisedEndDate = new Date(endDate.trim());
+  console.log(normalisedStartDate)
   if (!isValidDate(normalisedStartDate)) {
     throw new Error("Invalid start date");
   }
+  
   if (!isValidDate(normalisedEndDate)) {
     throw new Error("Invalid end date");
   }

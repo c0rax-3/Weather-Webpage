@@ -101,3 +101,20 @@
   background-clip: content-box;
   padding-left: 200px;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  text-wrap: balance;
+  width: 200px;
+  height: auto;
+  background-color: antiquewhite;
+  border-radius: 30px;
+  border: solid rgb(169, 169, 169) 2px;
+  padding: 20px;
+}
+
+.error:empty {
+  display: none;
+}

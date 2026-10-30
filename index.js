@@ -25,23 +25,28 @@ submitButton.addEventListener("click", () => {
   if (endDateInput === "") {
     endDateInput = startDateInput;
   }
-  const { normalisedLocation, normalisedStartDate, normalisedEndDate } =
-    validateForecastInput(locationInput, startDateInput, endDateInput);
-  if (errorDisplay.textContent === "") {
-    locationRetrieved.textContent = normalisedLocation.value;
-    weatherApi
-      .getForecastDates(
-        normalisedLocation,
-        normalisedStartDate,
-        normalisedEndDate,
-      )
-      .then((weatherData) => {
-        currentWeatherData = weatherData;
-        showDayData(weatherData, currentPage);
-      })
-      .catch((reason) => {
-        errorDisplay.textContent = `${reason} Error: Failed to fetch data, make sure you have inputed your values correctly`;
-      });
+  try {
+    const { normalisedLocation, normalisedStartDate, normalisedEndDate } =
+      validateForecastInput(locationInput, startDateInput, endDateInput);
+
+    if (errorDisplay.textContent === "") {
+      locationRetrieved.textContent = normalisedLocation.value;
+      weatherApi
+        .getForecastDates(
+          normalisedLocation,
+          normalisedStartDate,
+          normalisedEndDate,
+        )
+        .then((weatherData) => {
+          currentWeatherData = weatherData;
+          showDayData(weatherData, currentPage);
+        })
+        .catch((reason) => {
+          errorDisplay.textContent = reason;
+        });
+    }
+  } catch (errorMessage) {
+    errorDisplay.textContent = errorMessage;
   }
 });
 
