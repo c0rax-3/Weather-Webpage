@@ -10,7 +10,11 @@ export class ApiFetch {
     return fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
+          const errorPromise = response.text().then((errorText) => {
+            //make an extended error class called network error that can handle message and status
+            throw new Error({ message: errorText, status: response.status });
+          });
+          return errorPromise
         }
         return response.json();
       })
