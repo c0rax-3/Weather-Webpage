@@ -16,12 +16,9 @@ function validateForecastInput(location, startDate, endDate) {
 
   let normalisedStartDate = new Date(startDate.trim());
   let normalisedEndDate = new Date(endDate.trim());
-  console.log(normalisedStartDate)
+  console.log(normalisedStartDate);
   if (!isValidDate(normalisedStartDate)) {
     throw new Error("Invalid start date");
-  }
-  if (normalisedStartDate < startDateLimit) {
-    throw new Error("Invalid start date: start date cannot precede Jan 1 1970")
   }
   if (!isValidDate(normalisedEndDate)) {
     throw new Error("Invalid end date");
@@ -30,11 +27,14 @@ function validateForecastInput(location, startDate, endDate) {
     const endTemp = normalisedEndDate;
     normalisedEndDate = normalisedStartDate;
     normalisedStartDate = endTemp;
-    if (normalisedStartDate < startDateLimit) {
-    throw new Error("Invalid start date: start date cannot precede Jan 1 1970")
   }
+  if (normalisedStartDate < startDateLimit) {
+    throw new Error("Invalid start date: start date cannot precede Jan 1 1970");
   }
-
+  const millisecondsPerDay = 1000 * 60 * 60 * 24;
+  if (normalisedEndDate - normalisedStartDate > millisecondsPerDay * 10) {
+    throw new Error("Invalid date range: date range cannot exceed 10 days")
+  }
   return {
     normalisedLocation,
     normalisedStartDate: dateToYYYYMMDD(normalisedStartDate),
