@@ -1,3 +1,5 @@
+import { filterError } from "./validation.js";
+
 export class ApiFetch {
   constructor(apiKey) {
     this.apiKey = apiKey;
@@ -12,7 +14,8 @@ export class ApiFetch {
         if (!response.ok) {
           const errorPromise = response.text().then((errorText) => {
             //make an extended error class called network error that can handle message and status
-            throw new Error({ message: errorText, status: response.status });
+            const errorConstruct = new filterError(errorText, response)
+            throw errorConstruct
           });
           return errorPromise
         }
@@ -59,7 +62,8 @@ export class ApiFetch {
       })
       .catch((reason) => {
         console.error(reason);
-        throw reason;
+        const errorResult = reason.checkError()
+        throw new Error(errorResult);
       });
   }
 }

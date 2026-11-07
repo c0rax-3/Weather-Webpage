@@ -28,7 +28,7 @@ submitButton.addEventListener("click", () => {
   try {
     const { normalisedLocation, normalisedStartDate, normalisedEndDate } =
       validateForecastInput(locationInput, startDateInput, endDateInput);
-    locationRetrieved.textContent = normalisedLocation.value;
+    locationRetrieved.textContent = normalisedLocation;
     weatherApi
       .getForecastDates(
         normalisedLocation,
