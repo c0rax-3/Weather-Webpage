@@ -1,6 +1,7 @@
 import { ApiFetch } from "./api-fetch.js";
 import { showDayData } from "./display.js";
 import { validateForecastInput } from "./validation.js";
+import { NetworkError } from "./error.js";
 
 const location = document.querySelector(".location");
 const startDate = document.querySelector(".startDate");
@@ -40,7 +41,11 @@ submitButton.addEventListener("click", () => {
         showDayData(weatherData, currentPage);
       })
       .catch((reason) => {
-        console.log(reason)
+        console.error(reason);
+        if (reason instanceof NetworkError) {
+          errorDisplay.textContent = reason.checkError();
+          return;
+        }
         errorDisplay.textContent = reason;
       });
   } catch (errorMessage) {

@@ -13,10 +13,10 @@ export class ApiFetch {
       .then((response) => {
         if (!response.ok) {
           return response.text().then((errorText) => {
-            throw new NetworkError(errorText, response)
+            throw new NetworkError(errorText, response);
           });
         }
-        return response.json()
+        return response.json();
       })
       .then((fullWeatherData) => {
         const weatherData = {
@@ -56,11 +56,6 @@ export class ApiFetch {
           }),
         };
         return weatherData;
-      })
-      .catch((reason) => {
-        console.error(reason);
-        const errorResult = reason.checkError()
-        throw new Error(errorResult);
       });
   }
 }

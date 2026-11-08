@@ -1,8 +1,8 @@
 class NetworkError extends Error {
-  constructor(errorMsg, errorObject = {}) {
+  constructor(errorMsg, response = {}) {
     super(errorMsg);
     this.errorMsg = errorMsg;
-    this.errorStatus = errorObject.status;
+    this.errorStatus = response.status;
   }
 
   checkError() {
@@ -25,4 +25,4 @@ class NetworkError extends Error {
   }
 }
 
-export { NetworkError }
+export { NetworkError };
