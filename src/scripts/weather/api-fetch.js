@@ -1,4 +1,4 @@
-import { NetworkError } from "./error.js";
+import { NetworkError } from "../utils/error.js";
 
 export class ApiFetch {
   constructor(apiKey) {

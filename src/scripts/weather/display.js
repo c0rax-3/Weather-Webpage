@@ -1,4 +1,4 @@
-import { fahrenheitToCelcius } from "./temperature-utils.js";
+import { fahrenheitToCelcius } from "../utils/temperature-utils.js";
 
 const date = document.querySelector(".date");
 const tempmax = document.querySelector(".tempmax");

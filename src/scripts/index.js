@@ -1,7 +1,7 @@
-import { ApiFetch } from "./api-fetch.js";
-import { showDayData } from "./display.js";
-import { validateForecastInput } from "./validation.js";
-import { NetworkError } from "./error.js";
+import { ApiFetch } from "./weather/api-fetch.js";
+import { showDayData } from "./weather/display.js";
+import { validateForecastInput } from "./weather/validation.js";
+import { NetworkError } from "./utils/error.js";
 
 const location = document.querySelector(".location");
 const startDate = document.querySelector(".startDate");
