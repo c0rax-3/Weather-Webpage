@@ -41,6 +41,7 @@ submitButton.addEventListener("click", () => {
       })
       .catch((reason) => {
         console.log(reason)
+        errorDisplay.textContent = reason;
       });
   } catch (errorMessage) {
     errorDisplay.textContent = errorMessage;
