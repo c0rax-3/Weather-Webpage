@@ -38,7 +38,7 @@ export class ApiFetch {
               conditions: day.conditions,
               description: day.description,
               icon: day.icon,
-              hours: day.hours.map((hour) => {
+              hours: day.hours?.map((hour) => {
                 return {
                   datetime: hour.datetime,
                   datetimeEpoch: hour.datetimeEpoch,
