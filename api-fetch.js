@@ -1,4 +1,4 @@
-import { filterError } from "./validation.js";
+import { NetworkError } from "./error.js";
 
 export class ApiFetch {
   constructor(apiKey) {
@@ -12,14 +12,11 @@ export class ApiFetch {
     return fetch(url)
       .then((response) => {
         if (!response.ok) {
-          const errorPromise = response.text().then((errorText) => {
-            //make an extended error class called network error that can handle message and status
-            const errorConstruct = new filterError(errorText, response)
-            throw errorConstruct
+          return response.text().then((errorText) => {
+            throw new NetworkError(errorText, response)
           });
-          return errorPromise
         }
-        return response.json();
+        return response.json()
       })
       .then((fullWeatherData) => {
         const weatherData = {
