@@ -118,3 +118,12 @@
 .error:empty {
   display: none;
 }
+
+.bottom {
+  display: flex;
+  align-items: center;
+}
+
+.weatherIcon {
+  padding-left: 20px;
+}

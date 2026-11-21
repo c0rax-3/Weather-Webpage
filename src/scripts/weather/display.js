@@ -8,6 +8,7 @@ const humidity = document.querySelector(".humidity");
 const conditions = document.querySelector(".conditions");
 const description = document.querySelector(".description");
 const precipChartElement = document.querySelector(".precipChart")
+const weatherIconElement = document.querySelector(".weatherIcon")
 
 const hoursChart = Array(24)
   .fill(null)
@@ -42,6 +43,7 @@ function showDayData(weatherData, dayIndex) {
   humidity.textContent = `Humidity: ${day.humidity}`;
   conditions.textContent = `Conditions: ${day.conditions}`;
   description.textContent = `Description: ${day.description}`;
+  weatherIconElement.src = `../../../assets/icons/${day.icon}.svg`
 
   const hourPrecip = day.hours.map((hour) => hour.precip);
   precipChart.data.datasets[0].data = hourPrecip;
