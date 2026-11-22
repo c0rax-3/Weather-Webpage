@@ -46,6 +46,7 @@ precipChart.canvas.parentNode.style.width = '500px'
 
 function showDayData(weatherData, dayIndex) {
   const day = weatherData.days[dayIndex];
+  locationRetrieved.textContent = weatherData.address
   date.textContent = `Date: ${day.datetime}`;
   tempmax.textContent = `Temperature Max: ${fahrenheitToCelcius(day.tempmax)}`;
   tempmin.textContent = `Temperature Min: ${fahrenheitToCelcius(day.tempmin)}`;
@@ -53,7 +54,7 @@ function showDayData(weatherData, dayIndex) {
   humidity.textContent = `Humidity: ${day.humidity}`;
   conditions.textContent = `Conditions: ${day.conditions}`;
   description.textContent = `Description: ${day.description}`;
-  weatherIconElement.src = `../../../assets/icons/${day.icon}.svg`
+  weatherIconElement.src = `../../assets/icons/${day.icon}.svg`
 
   const hourPrecip = day.hours.map((hour) => hour.precip);
   precipChart.data.datasets[0].data = hourPrecip;
