@@ -54,7 +54,7 @@ function showDayData(weatherData, dayIndex) {
   humidity.textContent = `Humidity: ${day.humidity}`;
   conditions.textContent = `Conditions: ${day.conditions}`;
   description.textContent = `Description: ${day.description}`;
-  weatherIconElement.src = `../../assets/icons/${day.icon}.svg`
+  weatherIconElement.src = `/assets/icons/${day.icon}.svg`
 
   const hourPrecip = day.hours.map((hour) => hour.precip);
   precipChart.data.datasets[0].data = hourPrecip;
