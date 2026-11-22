@@ -9,6 +9,16 @@ const conditions = document.querySelector(".conditions");
 const description = document.querySelector(".description");
 const precipChartElement = document.querySelector(".precipChart")
 const weatherIconElement = document.querySelector(".weatherIcon")
+const locationRetrieved = document.querySelector(".locationRetrieved");
+const errorDisplay = document.querySelector(".error");
+
+function clearError() {
+  errorDisplay.textContent = ""
+}
+
+function displayError(reason) {
+  errorDisplay.textContent = reason
+}
 
 const hoursChart = Array(24)
   .fill(null)
@@ -50,4 +60,4 @@ function showDayData(weatherData, dayIndex) {
   precipChart.update();
 }
 
-export { showDayData };
+export { showDayData , clearError , displayError};

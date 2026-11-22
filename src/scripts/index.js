@@ -1,5 +1,5 @@
 import { ApiFetch } from "./weather/api-fetch.js";
-import { showDayData } from "./weather/display.js";
+import { showDayData , clearError , displayError} from "./weather/display.js";
 import { validateForecastInput } from "./weather/validation.js";
 import { NetworkError } from "./utils/error.js";
 
@@ -7,10 +7,8 @@ const location = document.querySelector(".location");
 const startDate = document.querySelector(".startDate");
 const endDate = document.querySelector(".endDate");
 const submitButton = document.querySelector(".submit");
-const locationRetrieved = document.querySelector(".locationRetrieved");
 const backButton = document.querySelector(".back");
 const forwardButton = document.querySelector(".forwards");
-const errorDisplay = document.querySelector(".error");
 
 const weatherApi = new ApiFetch("ZAK5CDFTNMMDMY556PVDS5GNQ");
 
@@ -19,7 +17,7 @@ let currentPage = 0;
 
 submitButton.addEventListener("click", () => {
   currentPage = 0;
-  errorDisplay.textContent = "";
+  clearError()
   const locationInput = location.value;
   const startDateInput = startDate.value;
   let endDateInput = endDate.value;
@@ -29,7 +27,7 @@ submitButton.addEventListener("click", () => {
   try {
     const { normalisedLocation, normalisedStartDate, normalisedEndDate } =
       validateForecastInput(locationInput, startDateInput, endDateInput);
-    locationRetrieved.textContent = normalisedLocation;
+    location.textContent = normalisedLocation;
     weatherApi
       .getForecastDates(
         normalisedLocation,
@@ -43,13 +41,13 @@ submitButton.addEventListener("click", () => {
       .catch((reason) => {
         console.error(reason);
         if (reason instanceof NetworkError) {
-          errorDisplay.textContent = reason.checkError();
+          displayError(reason.checkError())
           return;
         }
-        errorDisplay.textContent = reason;
+        displayError(reason);
       });
   } catch (errorMessage) {
-    errorDisplay.textContent = errorMessage;
+    displayError(errorMessage)
   }
 });
 
